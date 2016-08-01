@@ -45,4 +45,8 @@ object test_wordseg {
   }
 }
 ```
+这里要注意的是, Scala 要求并行计算的部分都要支持序列化, 如果遇到外部类不支持序列化, 如本例中的 KeyWordComputer 部分, 有两种解决方法.
+将 val kw = new KeyWordComputer(5) 部分移入 map 中.
+新写一个类继承 KeyWordComputer 同时继承 Serializable, 如本例中的做法.
+### 其他
 抽空看了下关键字抽取的代码, 略搓.. 之后有空自己搞个吧.
