@@ -30,17 +30,19 @@ class keyword(n: Int) extends KeyWordComputer(n: Int) with Serializable { }
  
 object test_wordseg {
   def main(args: Array[String]) {
- 
     val conf = new SparkConf().setMaster("local[*]").setAppName("word_seg")
     val sc = new SparkContext(conf)
-    val lines = sc.textFile("/path/to/some_text").persist()
-    val seg = lines.map(ToAnalysis.parse(_).map(_.getName()).mkString(" ")) // word_seg
+    val lines = sc.textFile("/path/to/some_text").cache()
+    
+    // do word_seg
+    val seg = lines.map(ToAnalysis.parse(_).map(_.getName()).mkString(" "))
     seg.take(10).foreach(println)
  
+    // do tags exact
     val kw = new keyword(5)
     val tags = lines.map(kw.computeArticleTfidf(_).mkString(" "))  // key word
     tags.take(10).foreach(println)
   }
 }
 ```
-话说抽空看了眼关键字抽取代码.. 略搓, 之后有空自己搞个吧.
+抽空看了下关键字抽取的代码, 略搓.. 之后有空自己搞个吧.
