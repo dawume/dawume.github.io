@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>spark 下分词/序列化问题 | dawu 写字的地方</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="scala 下一直找不到称手的分词工具, 这里最终选择了 ansjpom.xml 加入依赖
+pom.xml1234567891011&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.ansj&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;ansj_seg&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.0&amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spark 下分词/序列化问题">
+<meta property="og:url" content="http://yoursite.com/2016/08/01/spark-下分词-序列化问题/index.html">
+<meta property="og:site_name" content="dawu 写字的地方">
+<meta property="og:description" content="scala 下一直找不到称手的分词工具, 这里最终选择了 ansjpom.xml 加入依赖
+pom.xml1234567891011&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.ansj&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;ansj_seg&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.0&amp;l">
+<meta property="og:updated_time" content="2016-08-01T05:50:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spark 下分词/序列化问题">
+<meta name="twitter:description" content="scala 下一直找不到称手的分词工具, 这里最终选择了 ansjpom.xml 加入依赖
+pom.xml1234567891011&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.ansj&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;ansj_seg&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.0&amp;l">
+  
+    <link rel="alternative" href="/atom.xml" title="dawu 写字的地方" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dawu 写字的地方</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-spark-下分词-序列化问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/01/spark-下分词-序列化问题/" class="article-date">
+  <time datetime="2016-08-01T05:45:54.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      spark 下分词/序列化问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>scala 下一直找不到称手的分词工具, 这里最终选择了 ansj<br>pom.xml 加入依赖</p>
+<figure class="highlight xml"><figcaption><span>pom.xml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.ansj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ansj_seg<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.nlpcn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nlp-lang<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>以下为分词及关键字抽取的代码<br><figure class="highlight scala"><figcaption><span>test_wordseg.scala</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> org.apache.spark.&#123;<span class="type">SparkConf</span>, <span class="type">SparkContext</span>&#125;</div><div class="line"><span class="keyword">import</span> collection.<span class="type">JavaConversions</span>._</div><div class="line"><span class="keyword">import</span> org.ansj.app.keyword.<span class="type">KeyWordComputer</span></div><div class="line"><span class="keyword">import</span> org.ansj.splitWord.analysis.<span class="type">ToAnalysis</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">keyword</span>(<span class="params">n: <span class="type">Int</span></span>) <span class="keyword">extends</span> <span class="title">KeyWordComputer</span>(<span class="params">n: <span class="type">Int</span></span>) <span class="keyword">with</span> <span class="title">Serializable</span> </span>&#123; &#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">test_wordseg</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</div><div class="line"> </div><div class="line">    <span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setMaster(<span class="string">"local[*]"</span>).setAppName(<span class="string">"word_seg"</span>)</div><div class="line">    <span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</div><div class="line">    <span class="keyword">val</span> lines = sc.textFile(<span class="string">"/path/to/some_text"</span>).persist()</div><div class="line">    <span class="keyword">val</span> seg = lines.map(<span class="type">ToAnalysis</span>.parse(_).map(_.getName()).mkString(<span class="string">" "</span>)) <span class="comment">// word_seg</span></div><div class="line">    seg.take(<span class="number">10</span>).foreach(println)</div><div class="line"> </div><div class="line">    <span class="keyword">val</span> kw = <span class="keyword">new</span> keyword(<span class="number">5</span>)</div><div class="line">    <span class="keyword">val</span> tags = lines.map(kw.computeArticleTfidf(_).mkString(<span class="string">" "</span>))  <span class="comment">// key word</span></div><div class="line">    tags.take(<span class="number">10</span>).foreach(println)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>话说抽空看了眼关键字抽取代码.. 略搓, 之后有空自己搞个吧.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/01/spark-下分词-序列化问题/" data-id="cirbm8clx0000jot4zr082siq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/">spark</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/31/spark-开发配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mac spark 开发配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/">spark</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/01/spark-下分词-序列化问题/">spark 下分词/序列化问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/31/spark-开发配置/">mac spark 开发配置</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/31/test/">安装 hexo 及 hexo-math</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/30/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 dawu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
