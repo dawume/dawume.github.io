@@ -151,7 +151,7 @@ $ cp /usr/local/Cellar/maven/3.3.3/libexec/conf/settings.xml ~/.m2/settings.xml
 
 ### 第一个 WordCount 程序
 
-可以在左侧 src/main 目录下添加一个 scala 的文件夹存放 scala 源码, 之后在 菜单 - File - project structure - modules 中, 右键设置 src/main/scala 为 sources 文件夹
+可以在左侧 src/main 目录下添加一个 scala 的文件夹存放 scala 源码, 之后右键 Mark Directory As - Sources Root 设置为源码文件夹.
 在 scala 文件夹下新建 一个 scala 类, 类型为 object. 之后就可以添加代码了, 一个本地运行的 WordCount 的例子
 
 ```scala WordCount.scala
