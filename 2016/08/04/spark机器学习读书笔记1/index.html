@@ -3,21 +3,21 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Hello World | dawu 写字的地方</title>
+  <title>「spark 机器学习」读书笔记1 | dawu 写字的地方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="前言最近读完了「spark 机器学习」, 觉得还不错. 虽然内容有些老, 不过翻译还不错. 这里会陆续记录一些笔记.最近也用spark mllib做了点东西, 感觉坑还是有一些的. 下次专门搞个吐槽帖吧。下面进入正题, 「spark 机器学习」 这里是豆瓣的链接.
+以 IPYTHON 启动 REPL, 可以方便画图和进行一些统计计算python REPL1&amp;gt; IPYTHON=1 IPYTHO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://dawume.github.io/2016/07/30/hello-world/index.html">
+<meta property="og:title" content="「spark 机器学习」读书笔记1">
+<meta property="og:url" content="http://dawume.github.io/2016/08/04/spark机器学习读书笔记1/index.html">
 <meta property="og:site_name" content="dawu 写字的地方">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-08-01T03:28:42.000Z">
+<meta property="og:description" content="前言最近读完了「spark 机器学习」, 觉得还不错. 虽然内容有些老, 不过翻译还不错. 这里会陆续记录一些笔记.最近也用spark mllib做了点东西, 感觉坑还是有一些的. 下次专门搞个吐槽帖吧。下面进入正题, 「spark 机器学习」 这里是豆瓣的链接.
+以 IPYTHON 启动 REPL, 可以方便画图和进行一些统计计算python REPL1&amp;gt; IPYTHON=1 IPYTHO">
+<meta property="og:updated_time" content="2016-08-05T06:01:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="「spark 机器学习」读书笔记1">
+<meta name="twitter:description" content="前言最近读完了「spark 机器学习」, 觉得还不错. 虽然内容有些老, 不过翻译还不错. 这里会陆续记录一些笔记.最近也用spark mllib做了点东西, 感觉坑还是有一些的. 下次专门搞个吐槽帖吧。下面进入正题, 「spark 机器学习」 这里是豆瓣的链接.
+以 IPYTHON 启动 REPL, 可以方便画图和进行一些统计计算python REPL1&amp;gt; IPYTHON=1 IPYTHO">
   
     <link rel="alternative" href="/atom.xml" title="dawu 写字的地方" type="application/atom+xml">
   
@@ -63,10 +63,10 @@ Quick">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-spark机器学习读书笔记1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/07/30/hello-world/" class="article-date">
-  <time datetime="2016-07-30T15:16:33.000Z" itemprop="datePublished">2016-07-30</time>
+    <a href="/2016/08/04/spark机器学习读书笔记1/" class="article-date">
+  <time datetime="2016-08-03T16:10:13.000Z" itemprop="datePublished">2016-08-04</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      「spark 机器学习」读书笔记1
     </h1>
   
 
@@ -85,39 +85,31 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近读完了「spark 机器学习」, 觉得还不错. 虽然内容有些老, 不过翻译还不错. 这里会陆续记录一些笔记.<br>最近也用spark mllib做了点东西, 感觉坑还是有一些的. 下次专门搞个吐槽帖吧。<br>下面进入正题, <a href="https://book.douban.com/subject/26593179/" target="_blank" rel="external">「spark 机器学习」</a> 这里是豆瓣的链接.</p>
+<p>以 IPYTHON 启动 REPL, 可以方便画图和进行一些统计计算<br><figure class="highlight bash"><figcaption><span>python REPL</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; IPYTHON=1 IPYTHON_OPTS=<span class="string">"--pylab"</span> ./bin/pyspark</div></pre></td></tr></table></figure></p>
+<p>一些好用的算子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># countByValue, 相当于 Counter</span></div><div class="line">ages = user_fields.map(<span class="keyword">lambda</span> x: int(x[<span class="number">1</span>])).countByValue()</div><div class="line"></div><div class="line"><span class="comment"># stats 输出一些常用的统计信息</span></div><div class="line">ratings.stats()</div><div class="line">Out[<span class="number">27</span>]: (count: <span class="number">100000</span>, mean: <span class="number">3.52986</span>, stdev: <span class="number">1.12566797076</span>, max: <span class="number">5.0</span>, min: <span class="number">1.0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 生成类别特征到 int 的映射字典</span></div><div class="line">user_dict = user.distinct().zipWithIndex().collectAsMap()</div><div class="line">user_dict_bcast = sc.broadcast(user_dict)</div><div class="line"></div><div class="line"><span class="comment"># 抽取时间戳</span></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line">hour = datetime.datetime.fromtimestamp(ts).hour</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dawume.github.io/2016/07/30/hello-world/" data-id="cirbm8cmc0003jot4n0xk2ic7" class="article-share-link">Share</a>
+      <a data-url="http://dawume.github.io/2016/08/04/spark机器学习读书笔记1/" data-id="cirfqj11y0000a2t4ez0ryo0e" class="article-share-link">Share</a>
       
-        <a href="http://dawume.github.io/2016/07/30/hello-world/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://dawume.github.io/2016/08/04/spark机器学习读书笔记1/#disqus_thread" class="article-comment-link">Comments</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/">spark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2016/07/31/test/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          安装 hexo 及 hexo-math
-        
-      </div>
-    </a>
   
+    <a href="/2016/08/01/spark-下分词-序列化问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">spark 下分词/序列化问题</div>
+    </a>
   
 </nav>
 
@@ -218,7 +210,7 @@ Quick">
 <script>
   var disqus_shortname = 'dawume';
   
-  var disqus_url = 'http://dawume.github.io/2016/07/30/hello-world/';
+  var disqus_url = 'http://dawume.github.io/2016/08/04/spark机器学习读书笔记1/';
   
   (function(){
     var dsq = document.createElement('script');
@@ -239,23 +231,6 @@ Quick">
 
 <script src="/js/script.js"></script>
 
-  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
